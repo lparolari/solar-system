@@ -1,7 +1,7 @@
 {
-  "name": "template-typescript-package",
+  "name": "solar-system",
   "version": "0.0.0-development",
-  "description": "A boilerplate repo for publishing typescript packages to npm",
+  "description": "Solar system simulation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -15,12 +15,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/beeman/template-typescript-package.git"
+    "url": "https://github.com/lparolari/solar-system.git"
   },
   "keywords": [
-    "TypeScript",
-    "Package",
-    "Starter"
+    "Solar System"
   ],
   "author": {
     "name": "Bram Borggreve",
