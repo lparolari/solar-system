@@ -1,11 +1,12 @@
 import _ from 'lodash'
+import { Point2D } from './point'
 
 export type Name = Sun | Planet
 export type Sun = 'sun'
 export type Planet = 'mercury'
-export type Coord2D = [number, number]
+
 export type Entity = {
-  position: Coord2D
+  position: Point2D
 }
 export type System = {
   enities: Entity[]
@@ -20,6 +21,6 @@ const idx = (name: Name): number => {
   return 0
 }
 
-export const position = (name: Name) => (system: System): Coord2D => {
+export const position = (name: Name) => (system: System): Point2D => {
   return system.enities[idx(name)].position
 }
