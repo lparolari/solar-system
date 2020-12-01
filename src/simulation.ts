@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import { makePoint, Point2D } from './point'
 import { rotate } from './rotate'
 
@@ -16,6 +15,12 @@ export type Entity = {
 export type System = {
   entities: Entity[]
 }
+
+export type Config = {
+  tick: number
+}
+
+export type Simulation = Generator<System, System, System>
 
 export const makeEntity = (rotationSpeed: Speed) => (position: Point2D): Entity => ({
   rotationSpeed: rotationSpeed,
@@ -47,12 +52,21 @@ const forwardEntity = (tick: number) => (e: Entity): Entity => ({
 
 const forwardEntities = (tick: number) => (es: Entity[]): Entity[] => es.map(forwardEntity(tick))
 
-export const once = (system: System): System => makeSystem(forwardEntities(0.0174533)(system.entities))
+const defaultConfig: Config = {
+  tick: 0.0174533,
+}
 
-export const simulate = function* (): Generator<System, System, System> {
-  let system = fresh()
-  while (true) {
-    yield system
-    system = once(system)
+export const cfg = (c: Config = defaultConfig): Config => c
+
+export const once = (config: Config) => (system: System): System =>
+  makeSystem(forwardEntities(config.tick)(system.entities))
+
+export const simulate = function (config: Config) {
+  return function* (): Simulation {
+    let system = fresh()
+    while (true) {
+      yield system
+      system = once(config)(system)
+    }
   }
 }
