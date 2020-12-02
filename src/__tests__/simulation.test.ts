@@ -27,7 +27,7 @@ describe('once', () => {
       ],
     }
 
-    expect(once(system)).toEqual(rotatedSystem)
+    expect(once(system)[1]).toEqual(rotatedSystem[1])
   })
 
   test('it rotates entity by one step from first step', () => {

@@ -10,7 +10,7 @@
     "test:watch": "jest --watchAll",
     "build": "tsc",
     "watch": "tsc -w",
-    "start": "npm link && nodemon",
+    "start": "yarn link && nodemon",
     "semantic-release": "semantic-release"
   },
   "repository": {

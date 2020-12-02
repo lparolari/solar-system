@@ -2,7 +2,7 @@ import { makePoint, Point2D } from './point'
 import { rotate } from './rotate'
 
 export type Sun = 'sun'
-export type Planet = 'mercury'
+export type Planet = 'mercury' | 'venus'
 export type EntityId = Sun | Planet
 
 export type Speed = number
@@ -30,11 +30,13 @@ export const makeSystem = (es: Entity[]): System => ({ entities: es })
 
 export const makeSun = makeEntity(0)
 export const makeMercury = makeEntity(4.1477)
+export const makeVenus = makeEntity(1.502)
 
 const freshSun = makeSun(makePoint(0, 0))
 const freshMercury = makeMercury(makePoint(0.4, 0))
+const freshVenus = makeVenus(makePoint(0.7, 0))
 
-export const fresh = (): System => makeSystem([freshSun, freshMercury])
+export const fresh = (): System => makeSystem([freshSun, freshMercury, freshVenus])
 
 const idx = (name: EntityId): number => {
   if (name === 'mercury') return 1
