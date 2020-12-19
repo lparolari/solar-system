@@ -1,51 +1,13 @@
-import { makePoint, Point2D } from './point'
 import { rotate } from './rotate'
-
-export type Sun = 'sun'
-export type Planet = 'mercury' | 'venus'
-export type EntityId = Sun | Planet
-
-export type Speed = number
-
-export type Entity = {
-  position: Point2D
-  rotationSpeed: Speed
-}
-
-export type System = {
-  entities: Entity[]
-}
+import { Entity } from './system/entity'
+import { fresh } from './system/factory'
+import { makeSystem, System } from './system/system'
 
 export type Config = {
   tick: number
 }
 
 export type Simulation = Generator<System, System, System>
-
-export const makeEntity = (rotationSpeed: Speed) => (position: Point2D): Entity => ({
-  rotationSpeed: rotationSpeed,
-  position: position,
-})
-export const makeSystem = (es: Entity[]): System => ({ entities: es })
-
-export const makeSun = makeEntity(0)
-export const makeMercury = makeEntity(4.1477)
-export const makeVenus = makeEntity(1.502)
-
-const freshSun = makeSun(makePoint(0, 0))
-const freshMercury = makeMercury(makePoint(0.4, 0))
-const freshVenus = makeVenus(makePoint(0.7, 0))
-
-export const fresh = (): System => makeSystem([freshSun, freshMercury, freshVenus])
-
-const idx = (name: EntityId): number => {
-  if (name === 'mercury') return 1
-  return 0
-}
-
-export const position = (name: EntityId) => (system: System): Point2D => {
-  return system.entities[idx(name)].position
-}
 
 const forwardEntity = (tick: number) => (e: Entity): Entity => ({
   ...e,
