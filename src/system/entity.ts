@@ -14,18 +14,15 @@ export type Entity = {
  * e la sua posizione `position` e la restituisce.
  */
 export function makeEntity(rotationSpeed: Speed, position: Point2D): Entity {
-  return {
-    rotationSpeed: rotationSpeed,
-    position: position,
-  }
+  // DA IMPLEMENTARE (~ 2 righe di codice)
 }
 
 /** Restituisce la posizione dell'entità `entity`. */
 export function getPosition(entity: Entity): Point2D {
-  return entity.position
+  // DA IMPLEMENTARE (~ 1 riga di codice)
 }
 
 /** Restituisce la velocità di rotazione dell'entità `entity`. */
 export function getRotationSpeed(entity: Entity): Speed {
-  return entity.rotationSpeed
+  // DA IMPLEMENTARE (~ 1 riga di codice)
 }

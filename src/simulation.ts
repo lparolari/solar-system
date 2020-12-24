@@ -11,18 +11,14 @@ const tick = 0.0174533
  * rotazione e restituisce la nuova entità ruotata.
  */
 function forwardEntity(entity: Entity): Entity {
-  return {
-    ...entity,
-    position: rotate(tick * entity.rotationSpeed, entity.position),
-  }
-}
+  // DA IMPLEMENTARE (~ 4 righe di codice)
 
 /**
  * Ruota tutte le entità nell'array `entities` e restituisce l'array
  * con le entità ruotate.
  */
 function forwardEntities(entities: Entity[]): Entity[] {
-  return entities.map((e) => forwardEntity(e))
+  // DA IMPLEMENTARE (~ 4 righe di codice)
 }
 
 /**
@@ -30,7 +26,7 @@ function forwardEntities(entities: Entity[]): Entity[] {
  * e ne restituisce il nuovo sistema con le entità nelle nuove posizioni.
  */
 export function once(system: System): System {
-  return makeSystem(forwardEntities(system.entities))
+  // DA IMPLEMENTARE (~ 1 riga di codice)
 }
 
 export type Simulation = Generator<System, System, System>
