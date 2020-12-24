@@ -7,11 +7,17 @@ export type Entity = {
   rotationSpeed: Speed
 }
 
-export const makeEntity = (rotationSpeed: Speed, position: Point2D): Entity => ({
-  rotationSpeed: rotationSpeed,
-  position: position,
-})
+export function makeEntity(rotationSpeed: Speed, position: Point2D): Entity {
+  return {
+    rotationSpeed: rotationSpeed,
+    position: position,
+  }
+}
 
-export const getPosition = (entity: Entity): Point2D => entity.position
+export function getPosition(entity: Entity): Point2D {
+  return entity.position
+}
 
-export const getRotationSpeed = (entity: Entity): Speed => entity.rotationSpeed
+export function getRotationSpeed(entity: Entity): Speed {
+  return entity.rotationSpeed
+}

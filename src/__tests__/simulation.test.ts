@@ -1,4 +1,7 @@
-test('', () => expect(true).toBe(true))
+import { rotate } from '../rotate'
+import { once } from '../simulation'
+import { fresh } from '../system/factory'
+import { position, System } from '../system/system'
 
 // import { getX, getY } from '../point'
 // import { rotate } from '../rotate'
@@ -19,41 +22,41 @@ test('', () => expect(true).toBe(true))
 //   })
 // })
 
-// describe('once', () => {
-//   test('it rotates entity by one step from fresh', () => {
-//     const system: Simulation.System = Simulation.fresh()
-//     const rotatedSystem: Simulation.System = {
-//       entities: [
-//         { position: [0, 0], rotationSpeed: 0 },
-//         { position: rotate(0.0174533 * 4.1477)([0.4, 0]), rotationSpeed: 4.1477 },
-//       ],
-//     }
+describe('once', () => {
+  test('it rotates entity by one step from fresh', () => {
+    const system = fresh
+    const rotatedSystem: System = {
+      entities: [
+        { position: [0, 0], rotationSpeed: 0 },
+        { position: rotate(0.0174533 * 4.1477, [0.4, 0]), rotationSpeed: 4.1477 },
+      ],
+    }
 
-//     expect(once(system)[1]).toEqual(rotatedSystem[1])
-//   })
+    expect(once(system)[1]).toEqual(rotatedSystem[1])
+  })
 
-//   test('it rotates entity by one step from first step', () => {
-//     const system: Simulation.System = {
-//       entities: [
-//         { position: [0, 0], rotationSpeed: 0 },
-//         { position: rotate(0.0174533 * 4.1477)([0.4, 0]), rotationSpeed: 4.1477 },
-//       ],
-//     }
+  test('it rotates entity by one step from first step', () => {
+    const system: System = {
+      entities: [
+        { position: [0, 0], rotationSpeed: 0 },
+        { position: rotate(0.0174533 * 4.1477, [0.4, 0]), rotationSpeed: 4.1477 },
+      ],
+    }
 
-//     const rotatedSystem: Simulation.System = {
-//       entities: [
-//         { position: [0, 0], rotationSpeed: 0 },
-//         { position: rotate(0.0174533 * 4.1477)(Simulation.position('mercury')(system)), rotationSpeed: 4.1477 },
-//       ],
-//     }
+    const rotatedSystem: System = {
+      entities: [
+        { position: [0, 0], rotationSpeed: 0 },
+        { position: rotate(0.0174533 * 4.1477, position(system, 'mercury')), rotationSpeed: 4.1477 },
+      ],
+    }
 
-//     expect(once(system)).toEqual(rotatedSystem)
-//   })
-// })
+    expect(once(system)).toEqual(rotatedSystem)
+  })
+})
 
 // describe('simulate', () => {
 //   test('it returns first step equal to `once(fresh())`', () => {
-//     const sExpected = once(Simulation.fresh())
+//     const sExpected = once
 
 //     const iter = simulate()
 //     iter.next() // fresh()

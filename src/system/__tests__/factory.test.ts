@@ -31,6 +31,6 @@ describe('freshes', () => {
 
 describe('fresh', () => {
   test('it returns a system with sun, mercury, venus, earth as entities', () => {
-    expect(fresh()).toEqual(makeSystem([freshSun, freshMercury, freshVenus, freshEarth]))
+    expect(fresh).toEqual(makeSystem([freshSun, freshMercury, freshVenus, freshEarth]))
   })
 })

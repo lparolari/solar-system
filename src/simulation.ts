@@ -3,34 +3,30 @@ import { Entity } from './system/entity'
 import { fresh } from './system/factory'
 import { makeSystem, System } from './system/system'
 
-export type Config = {
-  tick: number
-}
+const tick = 0.0174533
 
 export type Simulation = Generator<System, System, System>
 
-const forwardEntity = (tick: number) => (e: Entity): Entity => ({
-  ...e,
-  position: rotate(tick * e.rotationSpeed)(e.position),
-})
-
-const forwardEntities = (tick: number) => (es: Entity[]): Entity[] => es.map(forwardEntity(tick))
-
-const defaultConfig: Config = {
-  tick: 0.0174533,
+function forwardEntity(tick: number, e: Entity): Entity {
+  return {
+    ...e,
+    position: rotate(tick * e.rotationSpeed, e.position),
+  }
 }
 
-export const cfg = (c: Config = defaultConfig): Config => c
+function forwardEntities(es: Entity[]): Entity[] {
+  return es.map((e) => forwardEntity(tick, e))
+}
 
-export const once = (config: Config) => (system: System): System =>
-  makeSystem(forwardEntities(config.tick)(system.entities))
+export function once(system: System): System {
+  return makeSystem(forwardEntities(system.entities))
+}
 
-export const simulate = function (config: Config) {
-  return function* (): Simulation {
-    let system = fresh()
-    while (true) {
-      yield system
-      system = once(config)(system)
-    }
+/* istanbul ignore next */
+export const simulate = function* (): Simulation {
+  let system = fresh
+  while (true) {
+    yield system
+    system = once(system)
   }
 }
