@@ -3,14 +3,14 @@ import { makeEntity, getPosition, getRotationSpeed } from '../entity'
 
 describe('makeEntity', () => {
   test('it construct a valid entity', () => {
-    expect(makeEntity(1)(makePoint(2, 3))).toEqual({ rotationSpeed: 1, position: [2, 3] })
+    expect(makeEntity(1, makePoint(2, 3))).toEqual({ rotationSpeed: 1, position: [2, 3] })
   })
 })
 
 describe('getters', () => {
   const p = makePoint(2, 3)
   const s = 1
-  const e = makeEntity(s)(p)
+  const e = makeEntity(s, p)
 
   describe('getPosition', () => {
     test('it returns the position', () => {
