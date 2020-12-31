@@ -19,7 +19,7 @@ export type Point2D = [Coord, Coord]
 /**
  * Costruisce un punto 2D date `x` e `y`.
  */
-export function makePoint(x: number, y: number): Point2D {
+export function makePoint(x: Coord, y: Coord): Point2D {
   // DA IMPLEMENTARE (~ 1 riga di codice)
 }
 
