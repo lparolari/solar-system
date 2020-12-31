@@ -2,8 +2,6 @@
   "name": "solar-system",
   "version": "0.0.0-development",
   "description": "Solar system simulation",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "scripts": {
     "lint": "eslint './src/**/*.{js,ts,tsx}'",
     "test": "jest",
@@ -18,17 +16,17 @@
     "url": "https://github.com/lparolari/solar-system.git"
   },
   "keywords": [
-    "Solar System"
+    "Solar System",
+    "Simulation",
+    "High School"
   ],
   "author": {
-    "name": "Bram Borggreve",
-    "email": "borggreve@gmail.com"
+    "name": "Luca Parolari",
+    "email": "luca.parolari23@gmail.com",
+    "url": "https://github.com/lparolari"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/beeman/template-typescript-package/issues"
-  },
-  "homepage": "https://github.com/beeman/template-typescript-package#readme",
+  "homepage": "https://github.com/lparolari/solar-system#readme",
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint && npm test",
@@ -55,9 +53,6 @@
     "ts-jest": "26.4.4",
     "typescript": "4.1.2"
   },
-  "files": [
-    "dist/**/*"
-  ],
   "dependencies": {
     "lodash": "^4.17.20"
   }
