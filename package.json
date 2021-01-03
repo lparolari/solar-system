@@ -1,7 +1,7 @@
 {
-  "name": "solar-system",
+  "name": "solar-system-simulation",
   "version": "0.0.0-development",
-  "description": "Solar system simulation",
+  "description": "Solar System Simulation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -21,14 +21,15 @@
     "Solar System"
   ],
   "author": {
-    "name": "Bram Borggreve",
-    "email": "borggreve@gmail.com"
+    "name": "Luca Parolari",
+    "email": "luca.parolari23@gmail.com",
+    "url": "https://github.com/lparolari"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/beeman/template-typescript-package/issues"
+    "url": "https://github.com/lparolari/solar-system-simulation/issues"
   },
-  "homepage": "https://github.com/beeman/template-typescript-package#readme",
+  "homepage": "https://github.com/lparolari/solar-system-simulation#readme",
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint && npm test",
